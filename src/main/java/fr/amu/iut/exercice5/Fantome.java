@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class Fantome extends Personnage {
 
     private Rectangle basCorps;
@@ -38,24 +40,43 @@ public class Fantome extends Personnage {
     }
 
     @Override
-    public void deplacerAGauche() {
+    public void deplacerAGauche(ArrayList<Obstacle> obstacles) {
+        super.deplacerAGauche(obstacles);
 
-
+        retineGauche.setCenterX(oeilGauche.getCenterX() - 1);
+        retineGauche.setCenterY(oeilGauche.getCenterY());
+        retineDroite.setCenterX(oeilDroit.getCenterX() - 1);
+        retineDroite.setCenterY(oeilDroit.getCenterY());
     }
 
     @Override
-    public void deplacerADroite(double largeurJeu) {
+    public void deplacerADroite(double largeurJeu, ArrayList<Obstacle> obstacles) {
+        super.deplacerADroite(largeurJeu, obstacles);
 
+        retineGauche.setCenterX(oeilGauche.getCenterX() + 1);
+        retineGauche.setCenterY(oeilGauche.getCenterY());
+        retineDroite.setCenterX(oeilDroit.getCenterX() + 1);
+        retineDroite.setCenterY(oeilDroit.getCenterY());
     }
 
     @Override
-    public void deplacerEnBas(double hauteurJeu) {
+    public void deplacerEnBas(double hauteurJeu, ArrayList<Obstacle> obstacles) {
+        super.deplacerEnBas(hauteurJeu, obstacles);
 
+        retineGauche.setCenterX(oeilGauche.getCenterX());
+        retineGauche.setCenterY(oeilGauche.getCenterY() + 1);
+        retineDroite.setCenterX(oeilDroit.getCenterX());
+        retineDroite.setCenterY(oeilDroit.getCenterY() + 1);
     }
 
     @Override
-    public void deplacerEnHaut() {
+    public void deplacerEnHaut(ArrayList<Obstacle> obstacles) {
+        super.deplacerEnHaut(obstacles);
 
+        retineGauche.setCenterX(oeilGauche.getCenterX());
+        retineGauche.setCenterY(oeilGauche.getCenterY() - 1);
+        retineDroite.setCenterX(oeilDroit.getCenterX());
+        retineDroite.setCenterY(oeilDroit.getCenterY() - 1);
     }
 
 
