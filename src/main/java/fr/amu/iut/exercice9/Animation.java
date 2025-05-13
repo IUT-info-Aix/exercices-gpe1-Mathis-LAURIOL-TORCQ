@@ -17,7 +17,7 @@ public class Animation extends Application {
         root.setCenter(customButton);
         Scene scene = new Scene(root, 400, 400);
 
-        Duration duration = Duration.millis(1500);
+        Duration duration = Duration.millis(150);
         TranslateTransition transition1 = new TranslateTransition(duration, customButton);
         transition1.setByX(150);
         transition1.setByY(-150);
@@ -34,6 +34,8 @@ public class Animation extends Application {
         transition4.setByY(-300);
 
         SequentialTransition st = new SequentialTransition(transition1, transition2, transition3, transition4);
+        st.autoReverseProperty().set(true);
+        st.setCycleCount(2);
 
         customButton.setOnMousePressed(mouseEvent -> st.play());
 

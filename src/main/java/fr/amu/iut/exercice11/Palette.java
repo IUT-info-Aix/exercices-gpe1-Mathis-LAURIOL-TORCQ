@@ -1,6 +1,11 @@
-package fr.amu.iut.exercice1;
+package fr.amu.iut.exercice11;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,6 +22,9 @@ import javafx.stage.Stage;
 @SuppressWarnings("Duplicates")
 public class Palette extends Application {
 
+    private IntegerProperty nbFois = new SimpleIntegerProperty();
+
+    private StringProperty couleurActuelle = new SimpleStringProperty("vert");
     private int nbVert = 0;
     private int nbRouge = 0;
     private int nbBleu = 0;
@@ -57,7 +65,34 @@ public class Palette extends Application {
         rouge = new Button("Rouge");
         bleu = new Button("Bleu");
 
-        /* VOTRE CODE ICI */
+        texteDuHaut.textProperty().bind(Bindings.createStringBinding(
+                () -> couleurActuelle.get() + " cliqué " + nbFois.get() + " fois",
+                nbFois, couleurActuelle
+        ));
+
+        vert.setOnMouseClicked(e -> {
+            couleurActuelle.setValue("vert");
+            nbVert = nbVert + 50;
+            nbFois.setValue(nbVert/50);
+            panneau.setStyle("-fx-background-color: rgb(" + nbRouge + "," + nbVert + "," + nbBleu + ");");
+
+        });
+
+        rouge.setOnMouseClicked(e -> {
+            couleurActuelle.setValue("rouge");
+            nbRouge = nbRouge + 50;
+            nbFois.setValue(nbRouge/50);
+            panneau.setStyle("-fx-background-color: rgb(" + nbRouge + "," + nbVert + "," + nbBleu + ");");
+        });
+
+        bleu.setOnMouseClicked(e -> {
+            couleurActuelle.setValue("bleu");
+            nbBleu = nbBleu + 50;
+            nbFois.setValue(nbBleu/50);
+            panneau.setStyle("-fx-background-color: rgb(" + nbRouge + "," + nbVert + "," + nbBleu + ");");
+
+        });
+
 
         boutons.getChildren().addAll(vert, rouge, bleu);
 
