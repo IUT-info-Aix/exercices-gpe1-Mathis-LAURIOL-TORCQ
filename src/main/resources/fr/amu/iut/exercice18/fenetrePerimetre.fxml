@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="fr.amu.iut.exercice18.PanneauPrincipal"
+          hgap="10" vgap="10">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Point A -->
+    <Label text="A" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Label text="xA" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Slider fx:id="sliderXA" min="0" max="20" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="yA" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Slider fx:id="sliderYA" min="0" max="20" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <!-- Point B -->
+    <Label text="B" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <Label text="xB" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <children>
+            <Button text="-" onAction="#decrementerBx"/>
+            <TextField fx:id="tfBx" editable="false"/>
+            <Button text="+" onAction="#incrementerBx"/>
+        </children>
+    </HBox>
+
+    <Label text="yB" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <children>
+            <Button text="-" onAction="#setByMinusAction"/>
+            <TextField fx:id="tfBy" editable="false"/>
+            <Button text="+" onAction="#setByPlusAction"/>
+        </children>
+    </HBox>
+
+    <!-- Périmètre -->
+    <Label text="Périmètre" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <TextField fx:id="tfPerimetre" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+    <!-- Pane pour dessin -->
+    <Pane fx:id="panneauDessin" prefWidth="300" prefHeight="300"
+          GridPane.columnIndex="0" GridPane.rowIndex="7"
+          GridPane.columnSpan="2"
+          style="-fx-background-color: cyan"/>
+</GridPane>
